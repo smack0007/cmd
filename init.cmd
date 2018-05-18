@@ -16,4 +16,7 @@ IF EXIST cmdtk\cmdtk.exe (
 SET prompt=$P$_$G$S
 CALL functions\cmd-update-title.cmd
 
+MODE 120,40
+CLS
+
 POPD
