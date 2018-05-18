@@ -5,13 +5,14 @@ CALL alias.cmd
 
 SET PATH=%PATH%;%~dp0\functions
 
-IF EXIST %~dp0\cmdtk\cmdtk.exe (
-    %~dp0\cmdtk\cmdtk.exe opacity 90
+IF EXIST clink\clink.bat (
+    CALL clink\clink.bat inject
 )
+
+IF EXIST cmdtk\cmdtk.exe (
+    cmdtk\cmdtk.exe opacity 90
+)
+
+CALL functions\cmd-update-title.cmd
 
 POPD
-
-:: This has to be the last command otherwise execution will appear to stop
-IF EXIST %~dp0\clink\clink.bat (
-    %~dp0\clink\clink.bat inject
-)
