@@ -2,6 +2,6 @@
 
 PUSHD %~dp0\..
 
-code .
+CALL code .
 
 POPD
