@@ -2,6 +2,7 @@
 PUSHD %~dp0
 
 CALL alias.cmd
+CALL env.cmd
 
 SET PATH=%PATH%;%~dp0\functions
 
