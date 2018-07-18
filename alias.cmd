@@ -6,7 +6,7 @@ DOSKEY gl=git log --oneline --all --graph --decorate  $*
 DOSKEY grep=findstr $*
 DOSKEY ls=dir /B
 DOSKEY pwd=echo %%cd%%
-DOSKEY rimraf=rmdir /s /q $*
+DOSKEY rmraf=rmdir /s /q $*
 DOSKEY touch=copy NUL /y $*
 DOSKEY which=where $*
 
