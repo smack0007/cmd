@@ -4,7 +4,8 @@ PUSHD %~dp0
 CALL alias.cmd
 CALL env.cmd
 
-SET PATH=%PATH%;%~dp0\functions
+SET PATH=%PATH%;%~dp0functions
+SET SCRIPTS_PATH=%~dp0scripts\
 
 IF EXIST clink\clink.bat (
     CALL clink\clink.bat inject --quiet
