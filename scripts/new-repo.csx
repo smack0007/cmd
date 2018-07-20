@@ -11,6 +11,18 @@ try
     }
 
     RunProcess("git", "clone", "https://github.com/smack0007/dotnet-new-repo-template.git", Args[0]);
+
+    foreach (var file in Directory.EnumerateFiles(Args[0], ".gitkeep", SearchOption.AllDirectories))
+    {
+        File.Delete(file);
+    }
+
+    var oldDirectory = Directory.GetCurrentDirectory();
+    
+    Directory.SetCurrentDirectory(Args[0]);
+    RunProcess("dotnet", "new", "sln");
+
+    Directory.SetCurrentDirectory(oldDirectory);
 }
 finally
 {
