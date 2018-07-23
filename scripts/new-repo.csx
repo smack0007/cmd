@@ -18,8 +18,11 @@ try
     }
 
     var oldDirectory = Directory.GetCurrentDirectory();
-    
+
     Directory.SetCurrentDirectory(Args[0]);
+
+    DeleteDirectory(".git");
+    RunProcess("git", "init");
     RunProcess("dotnet", "new", "sln");
 
     Directory.SetCurrentDirectory(oldDirectory);
