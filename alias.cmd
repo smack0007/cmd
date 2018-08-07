@@ -1,4 +1,4 @@
-DOSKEY alias=notepad "%~dp0\%0"
+DOSKEY alias=npp "%~dp0\%0"
 DOSKEY cd=cd /D $* ^&^& "%~dp0\scripts\cmd-update-title.cmd"
 DOSKEY clear=cls
 DOSKEY cp=copy $*
