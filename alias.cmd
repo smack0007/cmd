@@ -1,5 +1,5 @@
 DOSKEY alias=notepad "%~dp0\%0"
-DOSKEY cd=cd /D $* ^&^& "%~dp0\functions\cmd-update-title.cmd"
+DOSKEY cd=cd /D $* ^&^& "%~dp0\scripts\cmd-update-title.cmd"
 DOSKEY clear=cls
 DOSKEY cp=copy $*
 DOSKEY e.=explorer .

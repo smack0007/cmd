@@ -4,8 +4,9 @@ PUSHD %~dp0
 CALL alias.cmd
 CALL env.cmd
 
-SET PATH=%PATH%;%~dp0bin;%~dp0functions
-SET SCRIPTS_PATH=%~dp0scripts\
+SET BIN_DIR=%~dp0bin\
+SET SCRIPTS_DIR=%~dp0scripts\
+SET PATH=%PATH%;%~dp0bin;%~dp0scripts
 
 IF EXIST clink\clink.bat (
     CALL clink\clink.bat inject --quiet
@@ -16,7 +17,7 @@ IF EXIST cmdtk\cmdtk.exe (
 )
 
 SET prompt=$P$_$G$S
-CALL functions\cmd-update-title.cmd
+CALL scripts\cmd-update-title.cmd
 
 CLS
 
