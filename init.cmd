@@ -17,8 +17,9 @@ IF EXIST cmdtk\cmdtk.exe (
 )
 
 SET prompt=$P$_$G$S
-CALL scripts\cmd-update-title.cmd
 
 CLS
 
 POPD
+
+CALL %~dp0\scripts\cmd-update-title.cmd
