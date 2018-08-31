@@ -12,10 +12,6 @@ IF EXIST clink\clink.bat (
     CALL clink\clink.bat inject --quiet
 )
 
-IF EXIST cmdtk\cmdtk.exe (
-    cmdtk\cmdtk.exe opacity 90
-)
-
 SET prompt=$P$_$G$S
 
 CLS
