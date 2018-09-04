@@ -17,7 +17,7 @@ Windows Registry Editor Version 5.00
 "Icon"="cmd.exe"
 
 [HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuCmd\shell\open\command]
-@="cmd.exe /s /k pushd \"%V\""
+@="c:\\cmd\\start.cmd pushd \"%V\""
 
 [HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuCmd\shell\runas]
 "MUIVerb"="Command Prompt Elevated"
@@ -25,36 +25,7 @@ Windows Registry Editor Version 5.00
 "HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuCmd\shell\runas\command]
-@="cmd.exe /s /k pushd \"%V\""
-
-
-; PowerShell
-
-[HKEY_CLASSES_ROOT\Directory\shell\02MenuPowerShell]
-"MUIVerb"="PowerShell Prompts"
-"Icon"="powershell.exe"
-"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuPowerShell"
-
-[HKEY_CLASSES_ROOT\Directory\background\shell\02MenuPowerShell]
-"MUIVerb"="PowerShell Prompts"
-"Icon"="powershell.exe"
-"ExtendedSubCommandsKey"="Directory\\ContextMenus\\MenuPowerShell"
-
-[HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuPowerShell\shell\open]
-"MUIVerb"="PowerShell"
-"Icon"="powershell.exe"
-
-[HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuPowerShell\shell\open\command]
-@="powershell.exe -noexit -command Set-Location '%V'"
-
-[HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuPowerShell\shell\runas]
-"MUIVerb"="PowerShell Elevated"
-"Icon"="powershell.exe"
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\Directory\ContextMenus\MenuPowerShell\shell\runas\command]
-@="powershell.exe -noexit -command Set-Location '%V'"
-
+@="c:\\cmd\\start.cmd /s /k pushd \"%V\""
 
 ; Ensure OS Entries are on the Extended Menu (Shift-Right Click)
 
@@ -62,10 +33,4 @@ Windows Registry Editor Version 5.00
 "Extended"=""
 
 [HKEY_CLASSES_ROOT\Directory\background\shell\cmd]
-"Extended"=""
-
-[HKEY_CLASSES_ROOT\Directory\shell\Powershell]
-"Extended"=""
-
-[HKEY_CLASSES_ROOT\Directory\background\shell\Powershell]
 "Extended"=""
