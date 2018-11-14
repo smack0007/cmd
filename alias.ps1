@@ -1,0 +1,1 @@
+Set-Alias which get-command -Scope Global

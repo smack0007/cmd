@@ -1,0 +1,1 @@
+&$PSScriptRoot/alias.ps1
