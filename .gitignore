@@ -4,5 +4,5 @@ obj/
 clink/*
 !clink/.gitkeep
 
-cmdtk/*
-!cmdtk/.gitkeep
+ConEmu/*
+!ConEmu/.gitkeep
