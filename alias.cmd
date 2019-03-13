@@ -7,6 +7,7 @@ DOSKEY git-acp=git add -A ^&^& git commit -m $* ^&^& git push origin
 DOSKEY git-log=git log --oneline --all --graph --decorate  $*
 DOSKEY grep=findstr $*
 DOSKEY ls=dir /B
+DOSKEY mcd=mkdir $* ^&^& cd $*
 DOSKEY pwd=echo %%cd%%
 DOSKEY rimraf=rmdir /s /q $*
 REM DOSKEY touch=copy NUL /y $*
