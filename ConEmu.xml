@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2019-03-14 09:25:37" build="190310">
+		<key name=".Vanilla" modified="2019-03-14 11:09:52" build="190310">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -238,15 +238,15 @@
 				<value name="WndDragKey" type="dword" data="00121101"/>
 			</key>
 			<value name="UseCurrentSizePos" type="hex" data="01"/>
-			<value name="AutoSaveSizePos" type="hex" data="01"/>
+			<value name="AutoSaveSizePos" type="hex" data="00"/>
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
 			<value name="WindowMode" type="dword" data="0000051f"/>
-			<value name="ConWnd X" type="long" data="799"/>
-			<value name="ConWnd Y" type="long" data="369"/>
+			<value name="ConWnd X" type="long" data="657"/>
+			<value name="ConWnd Y" type="long" data="286"/>
 			<value name="LastMonitor" type="string" data="0,0,1920,1160"/>
-			<value name="ConWnd Width" type="dword" data="0000006a"/>
-			<value name="ConWnd Height" type="dword" data="00000021"/>
+			<value name="ConWnd Width" type="dword" data="00000078"/>
+			<value name="ConWnd Height" type="dword" data="00000028"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="Language" type="string" data="en"/>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
