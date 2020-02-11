@@ -13,6 +13,7 @@ DOSKEY mcd=mkdir $* ^&^& cd $*
 DOSKEY mv=move $*
 DOSKEY pwd=echo %%cd%%
 DOSKEY rimraf=rmdir /s /q $*
+DOSKEY rm=del $*
 REM DOSKEY touch=copy NUL /y $*
 DOSKEY which=where $*
 
