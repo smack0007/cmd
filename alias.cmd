@@ -1,4 +1,5 @@
 DOSKEY alias=npp "%~dp0\%0"
+DOSKEY cat=type $*
 DOSKEY cd=cd /D $* ^&^& "%~dp0\scripts\cmd-update-title.cmd"
 DOSKEY clear=cls
 DOSKEY cp=copy $*
@@ -9,6 +10,7 @@ DOSKEY git-log=git log --oneline --all --graph --decorate  $*
 DOSKEY grep=findstr $*
 DOSKEY ls=dir /B
 DOSKEY mcd=mkdir $* ^&^& cd $*
+DOSKEY mv=move $*
 DOSKEY pwd=echo %%cd%%
 DOSKEY rimraf=rmdir /s /q $*
 REM DOSKEY touch=copy NUL /y $*
