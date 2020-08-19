@@ -21,6 +21,6 @@ REM Get all arguments except the first.
 SET __SCRIPTARGS=
 FOR /f "tokens=1,* delims= " %%a IN ("%*") DO ( SET __SCRIPTARGS=%%b )
 
-tsc --strict --typeRoots "%__NPM_PREFIX%\node_modules\@types" --outFile %__OUTPUTFILE% %__SCRIPTFILE% && node %__OUTPUTFILE% %__SCRIPTARGS%
+tsc --strict --typeRoots "%__NPM_PREFIX%\node_modules\@types" %__SCRIPTFILE% && node %__OUTPUTFILE% %__SCRIPTARGS%
 
 ENDLOCAL
