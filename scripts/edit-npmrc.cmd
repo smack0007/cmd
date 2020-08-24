@@ -1,0 +1,2 @@
+@ECHO OFF
+CALL npp "%USERPROFILE%\.npmrc"
