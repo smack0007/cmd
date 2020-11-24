@@ -4,7 +4,6 @@ DOSKEY cat=type $*
 DOSKEY cd=cd /D $* ^&^& "%~dp0\update.cmd"
 DOSKEY clear=cls
 DOSKEY cp=copy $*
-DOSKEY dir=dir /A $*
 DOSKEY e.=explorer .
 DOSKEY git=git $* ^&^& "%~dp0\update.cmd"
 DOSKEY grep=findstr $*
