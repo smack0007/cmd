@@ -1,12 +1,12 @@
-DOSKEY alias=npp "%~dp0\%0"
+@ECHO OFF
+DOSKEY alias=DOSKEY /macros
 DOSKEY cat=type $*
-DOSKEY cd=cd /D $* ^&^& "%~dp0\scripts\cmd-update-title.cmd"
+DOSKEY cd=cd /D $* ^&^& "%~dp0\update.cmd"
 DOSKEY clear=cls
 DOSKEY cp=copy $*
 DOSKEY dir=dir /A $*
 DOSKEY e.=explorer .
-DOSKEY git-acp=git add -A ^&^& git commit -m $* ^&^& git push origin
-DOSKEY git-log=git log --oneline --all --graph --decorate  $*
+DOSKEY git=git $* ^&^& "%~dp0\update.cmd"
 DOSKEY grep=findstr $*
 DOSKEY ls=dir /A $*
 DOSKEY mcd=mkdir $* ^&^& cd $*
@@ -14,6 +14,5 @@ DOSKEY mv=move $*
 DOSKEY pwd=echo %%cd%%
 DOSKEY rimraf=rmdir /s /q $*
 DOSKEY rm=del $*
-REM DOSKEY touch=copy NUL /y $*
 DOSKEY which=where $*
 

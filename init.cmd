@@ -5,4 +5,4 @@ CALL init-core.cmd
 
 POPD
 
-CALL %~dp0\scripts\cmd-update-title.cmd
+CALL %~dp0\update.cmd

@@ -8,4 +8,4 @@ IF EXIST D:\CODE (
     CD \CODE
 )
 
-CALL %~dp0cmd-update-title.cmd
+CALL %~dp0..\update.cmd
