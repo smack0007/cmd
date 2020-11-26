@@ -1,2 +1,2 @@
 Shell Location: C:\\Windows\\System32\\cmd.exe
-Arguments: /K C:\\cmd\\init-core.cmd
+Arguments: /K C:\\cmd\\init.cmd
