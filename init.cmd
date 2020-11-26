@@ -1,4 +1,8 @@
 @ECHO OFF
+
+REM Use UTF-8
+REM CHCP 65001
+
 PUSHD %~dp0
 
 CALL alias.cmd
