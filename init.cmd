@@ -10,7 +10,8 @@ CALL env.cmd
 
 SET BIN_DIR=%~dp0bin\
 SET SCRIPTS_DIR=%~dp0scripts\
-SET PATH=%~dp0bin;%~dp0scripts;%PATH%
+SET PATH=%~dp0scripts;%PATH%
+SET HOME=%USERPROFILE%
 
 REM $E[92m Green foreground
 REM $P Current drive and path
