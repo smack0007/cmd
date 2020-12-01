@@ -1,0 +1,20 @@
+# Thanks to:
+# Phil Haack @haacked https://github.com/haacked/dotfiles/blob/main/git/gitconfig.aliases.symlink
+
+
+[alias]
+br = branch
+branches = branch -a
+co = checkout
+cob = checkout -b
+# Show list of files in a conflict state.
+conflicts = !git diff --name-only --diff-filter=U
+cp = cherry-pick
+find = "!git ls-files | grep -i"
+# git graph -10
+graph = log --oneline --graph --color --all --decorate
+last = "log -1 HEAD"
+# git ls -10
+ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+remotes = remote -v
+st = status -s
