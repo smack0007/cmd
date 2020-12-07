@@ -1,0 +1,14 @@
+function global:prompt
+{
+    $path = $pwd.Path
+    Write-Host -Object "$path " -ForegroundColor Green -NoNewLine
+
+    $timestamp = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
+    $timestamp = "[$timestamp]"
+    $cursorX = $Host.UI.RawUI.WindowSize.Width - $timestamp.Length
+    $cursorY = $Host.UI.RawUI.CursorPosition.Y
+    $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $cursorX,$cursorY
+    Write-Host -Object $timestamp -ForegroundColor White
+ 
+    return "# "
+}
