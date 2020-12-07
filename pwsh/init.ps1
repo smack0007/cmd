@@ -24,10 +24,10 @@ function global:prompt
 function cmd-cd() { Set-Location $CmdRoot }
 function cmd-code() { code $CmdRoot }
 function cmd-explorer() { explorer $CmdRoot }
-function cmd-gitex() { gitex $CmdRoot }
+function cmd-gitex() { pushd $CmdRoot; gitex; popd; }
 function cmd-pull() { pushd $CmdRoot; git pull; popd }
 function cmd-push() { param ($message) pushd $CmdRoot; git add -A && git commit -m "$message" && git push origin master; popd }
-
+function cmd-status() { pushd $CmdRoot; git status -s; popd }
 
 # npp
 if (Test-Path "C:\Program Files\Notepad++\notepad++.exe") {
