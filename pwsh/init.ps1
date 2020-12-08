@@ -17,6 +17,8 @@ function global:prompt
     return "# "
 }
 
+$Host.UI.RawUI.WindowTitle = $pwd;
+
 #
 # Aliases
 #
@@ -28,6 +30,9 @@ function cmd-gitex() { pushd $CmdRoot; gitex; popd; }
 function cmd-pull() { pushd $CmdRoot; git pull; popd }
 function cmd-push() { param ($message) pushd $CmdRoot; git add -A && git commit -m "$message" && git push origin master; popd }
 function cmd-status() { pushd $CmdRoot; git status -s; popd }
+
+Remove-Alias -Name cd
+function cd() { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
 
 function mcd() { param ($dir) mkdir $dir && cd $dir }
 
