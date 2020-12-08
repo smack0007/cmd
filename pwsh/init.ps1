@@ -29,6 +29,9 @@ function cmd-pull() { pushd $CmdRoot; git pull; popd }
 function cmd-push() { param ($message) pushd $CmdRoot; git add -A && git commit -m "$message" && git push origin master; popd }
 function cmd-status() { pushd $CmdRoot; git status -s; popd }
 
+function mcd() { param ($dir) mkdir $dir && cd $dir }
+
+
 # npp
 if (Test-Path "C:\Program Files\Notepad++\notepad++.exe") {
     Set-Alias -Name npp -Value "C:\Program Files\Notepad++\notepad++.exe"
