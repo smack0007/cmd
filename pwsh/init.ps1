@@ -4,17 +4,25 @@ $CmdRoot = (Get-Item $ProfileRoot).Parent.FullName
 
 function global:prompt
 {
-    $path = $pwd.Path
-    Write-Host -Object "$path " -ForegroundColor Green -NoNewLine
+    # If not the first line of output then add an extra
+    # line to seperate commands.
+    if ($Host.UI.RawUI.CursorPosition.Y -ne 0) {
+        Write-Host -Object "";
+    }
 
-    $timestamp = Get-Date -Format "dd/MM/yyyy HH:mm:ss"
-    $timestamp = "[$timestamp]"
-    $cursorX = $Host.UI.RawUI.WindowSize.Width - $timestamp.Length
-    $cursorY = $Host.UI.RawUI.CursorPosition.Y
-    $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $cursorX,$cursorY
-    Write-Host -Object $timestamp -ForegroundColor White
+    $promptString = "# ";
+
+    $path = $pwd.Path;
+    Write-Host -Object "$path " -ForegroundColor Green -NoNewLine;
+
+    $timestamp = Get-Date -Format "dd/MM/yyyy HH:mm:ss";
+    $timestamp = "[$timestamp]";
+    $cursorX = $Host.UI.RawUI.WindowSize.Width - $timestamp.Length;
+    $cursorY = $Host.UI.RawUI.CursorPosition.Y;
+    $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $cursorX,$cursorY;
+    Write-Host -Object $timestamp -ForegroundColor White;
  
-    return "# "
+    return $promptString;
 }
 
 $Host.UI.RawUI.WindowTitle = $pwd;
