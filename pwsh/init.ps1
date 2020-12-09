@@ -61,6 +61,8 @@ function env-set() { param($key, $value) [System.Environment]::SetEnvironmentVar
 Remove-Alias -Name cd;
 function cd() { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
 
+Set-Alias -Name e -Value explorer
+
 function mcd() { param ($dir) mkdir $dir && cd $dir; }
 
 # npp
