@@ -18,7 +18,19 @@ function global:prompt
     $path = $pwd.Path;
     Write-Host -Object "$path " -ForegroundColor Green -NoNewLine;
 
-    $timestamp = Get-Date -Format "dd/MM/yyyy HH:mm:ss";
+    $gitBranch = git branch --show-current;
+    if ($gitBranch) {
+        Write-Host -Object "($gitBranch" -ForegroundColor Blue -NoNewLine;
+
+        $gitStatus = git status -s;
+        if ($gitStatus) {
+            Write-Host -Object "*" -ForegroundColor Blue -NoNewLine;
+        }
+
+        Write-Host -Object ") " -ForegroundColor Blue -NoNewLine;
+    }
+
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss";
     $timestamp = "[$timestamp]";
     $cursorX = $Host.UI.RawUI.WindowSize.Width - $timestamp.Length;
     $cursorY = $Host.UI.RawUI.CursorPosition.Y;
@@ -49,8 +61,7 @@ function env-set() { param($key, $value) [System.Environment]::SetEnvironmentVar
 Remove-Alias -Name cd;
 function cd() { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
 
-function mcd() { param ($dir) mkdir $dir && cd $dir }
-
+function mcd() { param ($dir) mkdir $dir && cd $dir; }
 
 # npp
 if (Test-Path "C:\Program Files\Notepad++\notepad++.exe") {
