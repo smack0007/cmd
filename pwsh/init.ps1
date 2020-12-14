@@ -5,6 +5,15 @@ $CmdRoot = (Get-Item $ProfileRoot).Parent.FullName;
 # Set the HOME environment variable for git
 $Env:HOME = $Env:USERPROFILE;
 
+$promptDivider = [char]::ConvertFromUtf32(0xE0B0);
+$gitBranchSymbol = [char]::ConvertFromUtf32(0xE0A0);
+$hostBackgroundColor = $Host.UI.RawUI.BackgroundColor;
+$pathBackgroundColor = [ConsoleColor]::Blue;
+$pathForegroundColor = [ConsoleColor]::White;
+$gitUnchangedBackgroundColor = [ConsoleColor]::Green;
+$gitChangedBackgroundColor = [ConsoleColor]::DarkYellow;
+$gitForegroundColor = [ConsoleColor]::Black;
+
 function global:prompt
 {
     # If not the first line of output then add an extra
@@ -15,19 +24,24 @@ function global:prompt
 
     $promptString = "# ";
 
+    Write-Host $promptDivider -BackgroundColor $pathBackgroundColor -ForegroundColor $hostBackgroundColor -NoNewLine;
     $path = $pwd.Path;
-    Write-Host -Object "$path " -ForegroundColor Green -NoNewLine;
+    Write-Host " $path " -BackgroundColor $pathBackgroundColor -ForegroundColor $pathForegroundColor -NoNewLine;
 
     $gitBranch = git branch --show-current;
     if ($gitBranch) {
-        Write-Host -Object "($gitBranch" -ForegroundColor Blue -NoNewLine;
-
         $gitStatus = git status -s;
         if ($gitStatus) {
-            Write-Host -Object "*" -ForegroundColor Blue -NoNewLine;
+            $gitBackgroundColor = $gitChangedBackgroundColor;
+        } else {
+            $gitBackgroundColor = $gitUnchangedBackgroundColor;
         }
-
-        Write-Host -Object ") " -ForegroundColor Blue -NoNewLine;
+        
+        Write-Host $promptDivider -BackgroundColor $gitBackgroundColor -ForegroundColor $pathBackgroundColor -NoNewLine;
+        Write-Host " $gitBranchSymbol $gitBranch " -BackgroundColor $gitBackgroundColor -ForegroundColor $gitForegroundColor -NoNewLine;
+        Write-Host $promptDivider -BackgroundColor $hostBackgroundColor -ForegroundColor $gitBackgroundColor -NoNewLine;
+    } else {
+        Write-Host $promptDivider -BackgroundColor $hostBackgroundColor -ForegroundColor $pathBackgroundColor -NoNewLine;
     }
 
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss";

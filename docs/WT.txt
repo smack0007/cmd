@@ -6,7 +6,7 @@
     "name": "Ubuntu-20.04",
     "source": "Windows.Terminal.Wsl",
     "startingDirectory": "//wsl$/Ubuntu-20.04/home/zsnow",
-    "fontFace": "Cascadia Mono",
+    "fontFace": "Cascadia Mono PL",
     "fontSize": 14,
     "useAcrylic": true,
     "acrylicOpacity": 0.8
@@ -21,7 +21,7 @@
     "commandline": "%USERPROFILE%\\.dotnet\\tools\\pwsh.exe -noe -nop -nol -f C:\\cmd\\pwsh\\init.ps1",
     "startingDirectory": "D:\\",
     "source": "Windows.Terminal.PowershellCore",
-    "fontFace": "Cascadia Mono",
+    "fontFace": "Cascadia Mono PL",
     "fontSize": 14,
     "useAcrylic": true,
     "acrylicOpacity": 0.8
