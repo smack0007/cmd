@@ -80,6 +80,8 @@ Set-Alias -Name ll -Value Get-ChildItem
 
 function mcd() { param ($dir) mkdir $dir && cd $dir; }
 
+function rimraf() { param ($path) rm -r -force $path; }
+
 # npp
 if (Test-Path "C:\Program Files\Notepad++\notepad++.exe") {
     Set-Alias -Name npp -Value "C:\Program Files\Notepad++\notepad++.exe";
