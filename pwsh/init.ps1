@@ -8,11 +8,19 @@ $Env:HOME = $Env:USERPROFILE;
 $promptDivider = [char]::ConvertFromUtf32(0xE0B0);
 $gitBranchSymbol = [char]::ConvertFromUtf32(0xE0A0);
 $hostBackgroundColor = $Host.UI.RawUI.BackgroundColor;
+$credentialsBackgroundColor = [ConsoleColor]::DarkGray;
+$credentialsForegroundColor = [ConsoleColor]::White;
 $pathBackgroundColor = [ConsoleColor]::Blue;
 $pathForegroundColor = [ConsoleColor]::White;
 $gitUnchangedBackgroundColor = [ConsoleColor]::Green;
 $gitChangedBackgroundColor = [ConsoleColor]::DarkYellow;
 $gitForegroundColor = [ConsoleColor]::Black;
+
+function writePromptDivdier()
+{
+    param([ConsoleColor] $fromColor, [ConsoleColor] $toColor)
+    Write-Host $promptDivider -ForegroundColor $fromColor -BackgroundColor $toColor -NoNewLine;
+}
 
 function global:prompt
 {
@@ -22,9 +30,11 @@ function global:prompt
         Write-Host "";
     }
 
-    $promptString = "# ";
+    writePromptDivdier $hostBackgroundColor $credentialsBackgroundColor;
+    $credentials = "$Env:UserName@$Env:ComputerName";
+    Write-Host " $credentials " -BackgroundColor $credentialsBackgroundColor -ForegroundColor $credentialsForegroundColor -NoNewLine;
 
-    Write-Host $promptDivider -BackgroundColor $pathBackgroundColor -ForegroundColor $hostBackgroundColor -NoNewLine;
+    writePromptDivdier $credentialsBackgroundColor $pathBackgroundColor;
     $path = $pwd.Path;
     Write-Host " $path " -BackgroundColor $pathBackgroundColor -ForegroundColor $pathForegroundColor -NoNewLine;
 
@@ -37,11 +47,11 @@ function global:prompt
             $gitBackgroundColor = $gitUnchangedBackgroundColor;
         }
         
-        Write-Host $promptDivider -BackgroundColor $gitBackgroundColor -ForegroundColor $pathBackgroundColor -NoNewLine;
+        writePromptDivdier $pathBackgroundColor $gitBackgroundColor;
         Write-Host " $gitBranchSymbol $gitBranch " -BackgroundColor $gitBackgroundColor -ForegroundColor $gitForegroundColor -NoNewLine;
-        Write-Host $promptDivider -BackgroundColor $hostBackgroundColor -ForegroundColor $gitBackgroundColor -NoNewLine;
+        writePromptDivdier $gitBackgroundColor $hostBackgroundColor;
     } else {
-        Write-Host $promptDivider -BackgroundColor $hostBackgroundColor -ForegroundColor $pathBackgroundColor -NoNewLine;
+        writePromptDivdier $pathBackgroundColor $hostBackgroundColor;
     }
 
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss";
@@ -51,7 +61,7 @@ function global:prompt
     $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $cursorX, $cursorY;
     Write-Host -Object $timestamp -ForegroundColor White;
  
-    return $promptString;
+    return "# ";
 }
 
 $Host.UI.RawUI.WindowTitle = $pwd;
@@ -65,7 +75,7 @@ function cmd-code() { code $CmdRoot; }
 function cmd-explorer() { explorer $CmdRoot; }
 function cmd-gitex() { pushd $CmdRoot; gitex; popd; }
 function cmd-pull() { pushd $CmdRoot; git pull; popd; }
-function cmd-push() { param ($message) pushd $CmdRoot; git add -A && git commit -m "$message" && git push origin master; popd; }
+function cmd-push() { param($message) pushd $CmdRoot; git add -A && git commit -m "$message" && git push origin master; popd; }
 function cmd-status() { pushd $CmdRoot; git status -s; popd; }
 
 function env-get() { param($key) $value = [System.Environment]::GetEnvironmentVariable($key); Write-Host $value; }
@@ -78,9 +88,9 @@ function cd() { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd
 Set-Alias -Name e -Value explorer
 Set-Alias -Name ll -Value Get-ChildItem
 
-function mcd() { param ($dir) mkdir $dir && cd $dir; }
+function mcd() { param($dir) mkdir $dir && cd $dir; }
 
-function rimraf() { param ($path) rm -r -force $path; }
+function rimraf() { param($path) rm -r -force $path; }
 
 # npp
 if (Test-Path "C:\Program Files\Notepad++\notepad++.exe") {
