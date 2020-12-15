@@ -22,6 +22,40 @@ function writePromptDivdier()
     Write-Host $promptDivider -ForegroundColor $fromColor -BackgroundColor $toColor -NoNewLine;
 }
 
+function writePromptTimestamp()
+{
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss";
+    $date = $timestamp.Substring(0, 10);
+    $time = $timestamp.Substring(11, 8);
+
+    $hour = [int]::Parse($time.Substring(0, 2));
+    
+    if ($hour -gt 12) {
+        $hour -= 12;
+    }
+
+    switch ($hour) {
+        1  { $clock = "🕐"; }
+        2  { $clock = "🕑"; }
+        3  { $clock = "🕒"; }
+        4  { $clock = "🕓"; }
+        5  { $clock = "🕔"; }
+        6  { $clock = "🕕"; }
+        7  { $clock = "🕖"; }
+        8  { $clock = "🕗"; }
+        9  { $clock = "🕘"; }
+        10 { $clock = "🕙"; }
+        11 { $clock = "🕚"; }
+        12 { $clock = "🕛"; }
+    }
+
+    $timestamp = "📅$date$clock$time";
+    $cursorX = $Host.UI.RawUI.WindowSize.Width - $timestamp.Length;
+    $cursorY = $Host.UI.RawUI.CursorPosition.Y;
+    $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $cursorX, $cursorY;
+    Write-Host -Object $timestamp -ForegroundColor White;
+}
+
 function global:prompt
 {
     # If not the first line of output then add an extra
@@ -29,6 +63,8 @@ function global:prompt
     if ($Host.UI.RawUI.CursorPosition.Y -ne 0) {
         Write-Host "";
     }
+
+    writePromptTimestamp;
 
     writePromptDivdier $hostBackgroundColor $credentialsBackgroundColor;
     $credentials = "$Env:UserName@$Env:ComputerName";
@@ -53,14 +89,8 @@ function global:prompt
     } else {
         writePromptDivdier $pathBackgroundColor $hostBackgroundColor;
     }
-
-    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss";
-    $timestamp = "[$timestamp]";
-    $cursorX = $Host.UI.RawUI.WindowSize.Width - $timestamp.Length;
-    $cursorY = $Host.UI.RawUI.CursorPosition.Y;
-    $Host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates $cursorX, $cursorY;
-    Write-Host -Object $timestamp -ForegroundColor White;
  
+    Write-Host "";
     return "# ";
 }
 
