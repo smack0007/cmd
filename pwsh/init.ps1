@@ -115,12 +115,15 @@ function env-set() { param($key, $value) [System.Environment]::SetEnvironmentVar
 Remove-Alias -Name cd;
 function cd() { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
 
-Set-Alias -Name e -Value explorer
-Set-Alias -Name ll -Value Get-ChildItem
+Set-Alias -Name e -Value explorer;
+Set-Alias -Name ll -Value Get-ChildItem;
 
 function mcd() { param($dir) mkdir $dir && cd $dir; }
 
 function rimraf() { param($path) rm -r -force $path; }
+
+Remove-Item alias:\where -Force
+function where() { param($command) (Get-Command $command).Path; }
 
 # npp
 if (Test-Path "C:\Program Files\Notepad++\notepad++.exe") {
