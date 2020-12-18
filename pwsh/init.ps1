@@ -116,6 +116,7 @@ Remove-Alias -Name cd;
 function cd() { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
 
 Set-Alias -Name e -Value explorer;
+Set-Alias -Name grep -Value Select-String;
 Set-Alias -Name ll -Value Get-ChildItem;
 
 function mcd() { param($dir) mkdir $dir && cd $dir; }
