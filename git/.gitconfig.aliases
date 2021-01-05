@@ -4,7 +4,7 @@
 [alias]
 br = branch
 branches = branch -a
-brrm = !git branch -d $1 && git push origin --delete $1
+brrm = !git branch -d $1
 co = checkout
 cob = checkout -b
 # Show list of files in a conflict state.
