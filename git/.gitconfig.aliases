@@ -17,5 +17,6 @@ last = "log -1 HEAD"
 # git ls -10
 ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 make-personal = !git config user.name smack0007 && git config user.email zachary.snow@gmail.com
+push-upstream = push --set-upstream
 remotes = remote -v
 st = status -s
