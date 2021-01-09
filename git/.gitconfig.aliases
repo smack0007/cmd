@@ -4,7 +4,7 @@
 [alias]
 br = branch
 branches = branch -a
-brrm = !git branch -d $1
+brrm = branch -d
 co = checkout
 cob = checkout -b
 # Show list of files in a conflict state.
