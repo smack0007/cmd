@@ -1,8 +1,10 @@
 CMD:
+"terminal.integrated.automationShell.windows": "cmd.exe",
 "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
 "terminal.integrated.shellArgs.windows": ["/K", "C:\\cmd\\init.cmd"]
 
 PWSH:
+"terminal.integrated.automationShell.windows": "cmd.exe",
 "terminal.integrated.shell.windows": "${env:USERPROFILE}\\.dotnet\\tools\\pwsh.exe",
 "terminal.integrated.shellArgs.windows": [
     "-noe",
