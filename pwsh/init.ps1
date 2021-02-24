@@ -73,8 +73,13 @@ function cmd-push() { param($message) pushd $CmdRoot; git add -A && git commit -
 function cmd-status() { pushd $CmdRoot; git status -s; popd; }
 
 function env-get() { param($key) $value = [System.Environment]::GetEnvironmentVariable($key); Write-Host $value; }
+Set-Alias -Name get-env -Value env-get;
+
 function env-list() { Get-ChildItem Env:* | Sort-Object Name; }
+Set-Alias -Name list-env -Value env-list;
+
 function env-set() { param($key, $value) [System.Environment]::SetEnvironmentVariable($key, $value); }
+Set-Alias -Name set-env -Value env-set;
 
 Remove-Alias -Name cd;
 function cd() { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
