@@ -6,10 +6,7 @@ $CmdRoot = (Get-Item $ProfileRoot).Parent.FullName;
 $Env:HOME = $Env:USERPROFILE;
 
 $promptDivider = [char]::ConvertFromUtf32(0xE0B0);
-$gitBranchSymbol = [char]::ConvertFromUtf32(0xE0A0);
 $hostBackgroundColor = $Host.UI.RawUI.BackgroundColor;
-$credentialsBackgroundColor = [ConsoleColor]::DarkGray;
-$credentialsForegroundColor = [ConsoleColor]::White;
 $pathBackgroundColor = [ConsoleColor]::Blue;
 $pathForegroundColor = [ConsoleColor]::White;
 $gitUnchangedBackgroundColor = [ConsoleColor]::Green;
@@ -30,11 +27,7 @@ function global:prompt
         Write-Host "";
     }
 
-    writePromptDivdier $hostBackgroundColor $credentialsBackgroundColor;
-    $credentials = "$Env:UserName@$Env:ComputerName";
-    Write-Host " $credentials " -BackgroundColor $credentialsBackgroundColor -ForegroundColor $credentialsForegroundColor -NoNewLine;
-
-    writePromptDivdier $credentialsBackgroundColor $pathBackgroundColor;
+    writePromptDivdier $hostBackgroundColor $pathBackgroundColor;
     $path = $pwd.Path;
     Write-Host " $path " -BackgroundColor $pathBackgroundColor -ForegroundColor $pathForegroundColor -NoNewLine;
 
@@ -48,7 +41,7 @@ function global:prompt
         }
         
         writePromptDivdier $pathBackgroundColor $gitBackgroundColor;
-        Write-Host " $gitBranchSymbol $gitBranch " -BackgroundColor $gitBackgroundColor -ForegroundColor $gitForegroundColor -NoNewLine;
+        Write-Host " $gitBranch " -BackgroundColor $gitBackgroundColor -ForegroundColor $gitForegroundColor -NoNewLine;
         writePromptDivdier $gitBackgroundColor $hostBackgroundColor;
     } else {
         writePromptDivdier $pathBackgroundColor $hostBackgroundColor;
