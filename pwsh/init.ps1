@@ -82,6 +82,7 @@ Set-Alias -Name grep -Value Select-String;
 Set-Alias -Name ll -Value Get-ChildItem;
 
 function mcd() { param($dir) mkdir $dir && cd $dir; }
+function mkdirp() { param($dir) mkdir -p $dir; }
 
 function rimraf() { param($path) rm -r -force $path; }
 
