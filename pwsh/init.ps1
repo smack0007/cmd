@@ -29,6 +29,11 @@ function global:prompt
 
     writePromptDivdier $hostBackgroundColor $pathBackgroundColor;
     $path = $pwd.Path;
+
+    if (!$path.EndsWith("\")) {
+        $path = $path + "\";
+    }
+
     Write-Host " $path " -BackgroundColor $pathBackgroundColor -ForegroundColor $pathForegroundColor -NoNewLine;
 
     $gitBranch = git branch --show-current;
