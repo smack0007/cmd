@@ -27,7 +27,6 @@ function global:prompt
         Write-Host "";
     }
 
-    writePromptDivdier $hostBackgroundColor $pathBackgroundColor;
     $path = $pwd.Path;
 
     if (!$path.EndsWith("\")) {
