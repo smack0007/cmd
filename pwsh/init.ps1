@@ -93,6 +93,11 @@ function rimraf() { param($path) rm -r -force $path; }
 Remove-Item alias:\where -Force
 function where() { param($command) (Get-Command $command).Path; }
 
+# 7z
+if (Test-Path "C:\Program Files\7-Zip\7z.exe") {
+    Set-Alias -Name 7z -Value "C:\Program Files\7-Zip\7z.exe";
+}
+
 # npp
 if (Test-Path "C:\Program Files\Notepad++\notepad++.exe") {
     Set-Alias -Name npp -Value "C:\Program Files\Notepad++\notepad++.exe";
