@@ -18,7 +18,7 @@ $glyphs = @{
     "left_hard_divider" = [char]::ConvertFromUtf32(0xE0B0)
 };
 
-function writePromptDivdier()
+function writePromptDivdier
 {
     param([ConsoleColor] $fromColor, [ConsoleColor] $toColor)
     Write-Host $glyphs["left_hard_divider"] -ForegroundColor $fromColor -BackgroundColor $toColor -NoNewLine;
@@ -66,37 +66,37 @@ $Host.UI.RawUI.WindowTitle = $pwd;
 # Aliases
 #
 
-function cmd-cd() { Set-Location $CmdRoot; }
-function cmd-code() { code $CmdRoot; }
-function cmd-explorer() { explorer $CmdRoot; }
-function cmd-gitex() { pushd $CmdRoot; gitex; popd; }
-function cmd-pull() { pushd $CmdRoot; git pull; popd; }
-function cmd-push() { param($message) pushd $CmdRoot; git add -A && git commit -m "$message" && git push origin master; popd; }
-function cmd-status() { pushd $CmdRoot; git status -s; popd; }
+function cmd-cd { Set-Location $CmdRoot; }
+function cmd-code { code $CmdRoot; }
+function cmd-explorer { explorer $CmdRoot; }
+function cmd-gitex { pushd $CmdRoot; gitex; popd; }
+function cmd-pull { pushd $CmdRoot; git pull; popd; }
+function cmd-push { param($message) pushd $CmdRoot; git add -A && git commit -m "$message" && git push origin master; popd; }
+function cmd-status { pushd $CmdRoot; git status -s; popd; }
 
-function env-get() { param($key) $value = [System.Environment]::GetEnvironmentVariable($key); Write-Host $value; }
+function env-get { param($key) $value = [System.Environment]::GetEnvironmentVariable($key); Write-Host $value; }
 Set-Alias -Name get-env -Value env-get;
 
-function env-list() { Get-ChildItem Env:* | Sort-Object Name; }
+function env-list { Get-ChildItem Env:* | Sort-Object Name; }
 Set-Alias -Name list-env -Value env-list;
 
-function env-set() { param($key, $value) [System.Environment]::SetEnvironmentVariable($key, $value); }
+function env-set { param($key, $value) [System.Environment]::SetEnvironmentVariable($key, $value); }
 Set-Alias -Name set-env -Value env-set;
 
 Remove-Alias -Name cd;
-function cd() { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
+function cd { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
 
 Set-Alias -Name e -Value explorer;
 Set-Alias -Name grep -Value Select-String;
 Set-Alias -Name ll -Value Get-ChildItem;
 
-function mcd() { param($dir) mkdir $dir && cd $dir; }
-function mkdirp() { param($dir) mkdir -p $dir; }
+function mcd { param($dir) mkdir $dir && cd $dir; }
+function mkdirp { param($dir) mkdir -p $dir; }
 
-function rimraf() { param($path) rm -r -force $path; }
+function rimraf { param($path) rm -r -force $path; }
 
 Remove-Item alias:\where -Force
-function where() { param($command) (Get-Command $command).Path; }
+function where { param($command) (Get-Command $command).Path; }
 
 # 7z
 if (Test-Path "C:\Program Files\7-Zip\7z.exe") {
