@@ -3,20 +3,25 @@ $ProfileRoot = $PSScriptRoot;
 $CmdRoot = (Get-Item $ProfileRoot).Parent.FullName;
 
 # Set the HOME environment variable for git
-$Env:HOME = $Env:USERPROFILE;
+$env:HOME = $env:USERPROFILE;
 
-$promptDivider = [char]::ConvertFromUtf32(0xE0B0);
-$hostBackgroundColor = $Host.UI.RawUI.BackgroundColor;
-$pathBackgroundColor = [ConsoleColor]::Blue;
-$pathForegroundColor = [ConsoleColor]::White;
-$gitUnchangedBackgroundColor = [ConsoleColor]::Green;
-$gitChangedBackgroundColor = [ConsoleColor]::DarkYellow;
-$gitForegroundColor = [ConsoleColor]::Black;
+$colors = @{
+    "hostBackground" = $Host.UI.RawUI.BackgroundColor;
+    "pathBackground" = [ConsoleColor]::Blue;
+    "pathForeground" = [ConsoleColor]::White;
+    "gitUnchangedBackground" = [ConsoleColor]::Green;
+    "gitChangedBackground" = [ConsoleColor]::DarkYellow;
+    "gitForeground" = [ConsoleColor]::Black;
+};
+
+$glyphs = @{
+    "left_hard_divider" = [char]::ConvertFromUtf32(0xE0B0)
+};
 
 function writePromptDivdier()
 {
     param([ConsoleColor] $fromColor, [ConsoleColor] $toColor)
-    Write-Host $promptDivider -ForegroundColor $fromColor -BackgroundColor $toColor -NoNewLine;
+    Write-Host $glyphs["left_hard_divider"] -ForegroundColor $fromColor -BackgroundColor $toColor -NoNewLine;
 }
 
 function global:prompt
@@ -33,22 +38,22 @@ function global:prompt
         $path = $path + "\";
     }
 
-    Write-Host " $path " -BackgroundColor $pathBackgroundColor -ForegroundColor $pathForegroundColor -NoNewLine;
+    Write-Host " $path " -BackgroundColor $colors["pathBackground"] -ForegroundColor $colors["pathForeground"] -NoNewLine;
 
     $gitBranch = git branch --show-current;
     if ($gitBranch) {
         $gitStatus = git status -s;
         if ($gitStatus) {
-            $gitBackgroundColor = $gitChangedBackgroundColor;
+            $gitBackgroundColor = $colors["gitChangedBackground"];
         } else {
-            $gitBackgroundColor = $gitUnchangedBackgroundColor;
+            $gitBackgroundColor = $colors["gitUnchangedBackground"];
         }
         
-        writePromptDivdier $pathBackgroundColor $gitBackgroundColor;
-        Write-Host " $gitBranch " -BackgroundColor $gitBackgroundColor -ForegroundColor $gitForegroundColor -NoNewLine;
-        writePromptDivdier $gitBackgroundColor $hostBackgroundColor;
+        writePromptDivdier $colors["pathBackground"] $gitBackgroundColor;
+        Write-Host " $gitBranch " -BackgroundColor $gitBackgroundColor -ForegroundColor $colors["gitForeground"] -NoNewLine;
+        writePromptDivdier $gitBackgroundColor $colors["hostBackground"];
     } else {
-        writePromptDivdier $pathBackgroundColor $hostBackgroundColor;
+        writePromptDivdier $colors["pathBackground"] $colors["hostBackground"];
     }
  
     Write-Host "";
