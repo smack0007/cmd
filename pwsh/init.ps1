@@ -16,6 +16,8 @@ $colors = @{
 
 $glyphs = @{
     "left_hard_divider" = [char]::ConvertFromUtf32(0xE0B0)
+    "folder_open" = [char]::ConvertFromUtf32(0xE5FE)
+    "git_branch" = [char]::ConvertFromUtf32(0xE725)
 };
 
 function writePromptDivdier
@@ -38,7 +40,7 @@ function global:prompt
         $path = $path + "\";
     }
 
-    Write-Host " $path " -BackgroundColor $colors["pathBackground"] -ForegroundColor $colors["pathForeground"] -NoNewLine;
+    Write-Host (" " + $glyphs["folder_open"] + " " + $path + " ") -BackgroundColor $colors["pathBackground"] -ForegroundColor $colors["pathForeground"] -NoNewLine;
 
     $gitBranch = git branch --show-current;
     if ($gitBranch) {
@@ -50,7 +52,7 @@ function global:prompt
         }
         
         writePromptDivdier $colors["pathBackground"] $gitBackgroundColor;
-        Write-Host " $gitBranch " -BackgroundColor $gitBackgroundColor -ForegroundColor $colors["gitForeground"] -NoNewLine;
+        Write-Host (" " + $glyphs["git_branch"] + " " + $gitBranch + " ") -BackgroundColor $gitBackgroundColor -ForegroundColor $colors["gitForeground"] -NoNewLine;
         writePromptDivdier $gitBackgroundColor $colors["hostBackground"];
     } else {
         writePromptDivdier $colors["pathBackground"] $colors["hostBackground"];
