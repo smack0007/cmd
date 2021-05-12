@@ -88,6 +88,8 @@ Set-Alias -Name set-env -Value env-set;
 Remove-Alias -Name cd;
 function cd { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
 
+function fork { wt -w 0 -d "$(Get-Location)" }
+
 Set-Alias -Name e -Value explorer;
 Set-Alias -Name grep -Value Select-String;
 Set-Alias -Name ll -Value Get-ChildItem;
