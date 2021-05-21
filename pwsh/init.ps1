@@ -20,10 +20,22 @@ $glyphs = @{
     "git_branch" = [char]::ConvertFromUtf32(0xE725)
 };
 
-function writePromptDivdier
+function __writePromptDivdier
 {
     param([ConsoleColor] $fromColor, [ConsoleColor] $toColor)
     Write-Host $glyphs["left_hard_divider"] -ForegroundColor $fromColor -BackgroundColor $toColor -NoNewLine;
+}
+
+function __updateWindowTitle
+{
+    $title = "";
+
+    if (Test-Administrator) {
+        $title += "ADMIN: ";
+    }
+
+    $title += $pwd;
+    $Host.UI.RawUI.WindowTitle = $title;
 }
 
 function global:prompt
@@ -51,18 +63,16 @@ function global:prompt
             $gitBackgroundColor = $colors["gitUnchangedBackground"];
         }
         
-        writePromptDivdier $colors["pathBackground"] $gitBackgroundColor;
+        __writePromptDivdier $colors["pathBackground"] $gitBackgroundColor;
         Write-Host (" " + $glyphs["git_branch"] + " " + $gitBranch + " ") -BackgroundColor $gitBackgroundColor -ForegroundColor $colors["gitForeground"] -NoNewLine;
-        writePromptDivdier $gitBackgroundColor $colors["hostBackground"];
+        __writePromptDivdier $gitBackgroundColor $colors["hostBackground"];
     } else {
-        writePromptDivdier $colors["pathBackground"] $colors["hostBackground"];
+        __writePromptDivdier $colors["pathBackground"] $colors["hostBackground"];
     }
  
     Write-Host "";
     return "# ";
 }
-
-$Host.UI.RawUI.WindowTitle = $pwd;
 
 #
 # Aliases
@@ -86,7 +96,7 @@ function env-set { param($key, $value) [System.Environment]::SetEnvironmentVaria
 Set-Alias -Name set-env -Value env-set;
 
 Remove-Alias -Name cd;
-function cd { param($dir) Set-Location $dir; $Host.UI.RawUI.WindowTitle = $pwd; }
+function cd { param($dir) Set-Location $dir; __updateWindowTitle }
 
 function fork { wt -w 0 -d "$(Get-Location)" }
 
@@ -120,3 +130,15 @@ if (Test-Path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\
 } elseif (Test-Path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe") {
     Set-Alias -Name vs -Value "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe";
 }
+
+#
+# Functions
+#
+
+function Test-Administrator  
+{  
+    $user = [Security.Principal.WindowsIdentity]::GetCurrent();
+    (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)  
+}
+
+__updateWindowTitle
