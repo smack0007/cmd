@@ -142,3 +142,11 @@ function Test-Administrator
 }
 
 __updateWindowTitle
+
+function Git-Template
+{
+    param($src, $dest)
+    git clone https://github.com/$src $dest --depth 1;
+    cd $dest;
+    rm -r -Force .git
+}
