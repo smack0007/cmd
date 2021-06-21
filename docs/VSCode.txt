@@ -13,5 +13,5 @@ PWSH:
     "-f",
     "C:\\cmd\\pwsh\\init.ps1"
 ],
-"terminal.integrated.fontFamily": "Cascadia Mono PL",
+"terminal.integrated.fontFamily": "Hack Nerd Font Mono",
 "terminal.integrated.fontSize": 18,
