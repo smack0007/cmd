@@ -131,6 +131,8 @@ if (Test-Path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\
     Set-Alias -Name vs -Value "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe";
 }
 
+function wslcode { param($dir) wsl.exe -- code $dir; }
+
 #
 # Functions
 #
