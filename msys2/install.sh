@@ -1,0 +1,1 @@
+echo '. /c/cmd/msys2/.bashrc' >> ~/.bashrc

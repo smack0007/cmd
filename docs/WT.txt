@@ -26,3 +26,14 @@
     "useAcrylic": true,
     "acrylicOpacity": 0.8
 },
+
+=== MSYS2 ===
+
+{
+    "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c274}",
+    "hidden": false,
+    "name": "MSYS2",
+    "commandline": "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path",
+    "startingDirectory": "D:\\",
+    "icon": "C:\\msys64\\mingw64.ico"
+}
