@@ -19,6 +19,9 @@ __prompt_color() {
 }
 
 __prompt () {
+    # Update the tab title
+    echo -en "\033]0;$("pwd")\a"
+    
     local git_branch=$(git branch --show-current 2>/dev/null)    
     
     __prompt_color $__WHITE $__BLUE
