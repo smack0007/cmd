@@ -19,3 +19,8 @@ alias fork="wt -w 0 -d '$(pwd)'"
 alias gitex="cmd /c '\"C:\Program Files (x86)\GitExtensions\gitex.cmd\"'"
 
 alias ll="ls -lA --color=auto"
+
+function mcd() {
+    mkdir -p $1
+    cd $1
+}
