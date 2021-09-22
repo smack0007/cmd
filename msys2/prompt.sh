@@ -51,6 +51,5 @@ __prompt () {
     __prompt_color $__WHITE
     PS1+="${__PROMPT_COLOR}\n# \e[0m"
 }
-PROMPT_COMMAND=__prompt
 
-set bell-style none
+PROMPT_COMMAND=__prompt
