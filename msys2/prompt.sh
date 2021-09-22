@@ -20,12 +20,12 @@ __prompt_color() {
 
 __prompt () {
     # Update the tab title
-    echo -en "\033]0;$("pwd")\a"
+    PS1="\[\e]2;$(pwd)\a\]"
     
     local git_branch=$(git branch --show-current 2>/dev/null)    
     
     __prompt_color $__WHITE $__BLUE
-    PS1="\n${__PROMPT_COLOR} ${__FOLDER_GLYPH} \w "
+    PS1+="\n${__PROMPT_COLOR} ${__FOLDER_GLYPH} \w "
     
     if [[ $git_branch ]]; then       
         local git_status=$(git status -s)
@@ -49,7 +49,7 @@ __prompt () {
     fi
     
     __prompt_color $__WHITE
-    PS1+="${__PROMPT_COLOR}\n# \e[0m"
+    PS1+="${__PROMPT_COLOR}\n#\e[0m "
 }
 
 PROMPT_COMMAND=__prompt
