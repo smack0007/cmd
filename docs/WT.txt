@@ -35,5 +35,5 @@
     "name": "MSYS2",
     "commandline": "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path",
     "startingDirectory": "D:\\",
-    "icon": "C:\\msys64\\mingw64.ico"
+    "icon": "C:\\msys64\\msys2.ico"
 }

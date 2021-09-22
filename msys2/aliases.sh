@@ -12,4 +12,6 @@ function cmd-push() {
 
 alias cmd-status="pushd $CMDROOT > /dev/null && git status -s && popd > /dev/null"
 
+alias gitex="cmd /c '\"C:\Program Files (x86)\GitExtensions\gitex.cmd\"'"
+
 alias ll="ls -lA --color=auto"
