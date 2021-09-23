@@ -34,7 +34,7 @@
     "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c274}",
     "hidden": false,
     "name": "MSYS2",
-    "commandline": "C:\\msys64\\msys2_shell.cmd -defterm -here -no-start -mingw64 -use-full-path",
+    "commandline": "C:\\cmd\\msys2.cmd",
     "startingDirectory": "D:\\",
     "icon": "C:\\msys64\\msys2.ico"
 }
