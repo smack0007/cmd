@@ -1,1 +1,1 @@
-echo '. /c/cmd/msys2/.bashrc' >> ~/.bashrc
+echo '. /c/cmd/msys2/.bashrc' >> ~/.bash_profile
