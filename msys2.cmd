@@ -1,5 +1,9 @@
 @ECHO OFF
 
+REM Unset to prevent MSYS2 from mangling the path when launching
+REM from VS Code.
+SET ORIGINAL_PATH=
+
 REM Use the same "HOME" directory as Windows
 SET HOME=%USERPROFILE%
 
