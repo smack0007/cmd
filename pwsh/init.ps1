@@ -109,6 +109,16 @@ function mkdirp { param($dir) mkdir -p $dir; }
 
 function rimraf { param($path) rm -r -force $path; }
 
+# Credit: https://github.com/stephenn/powershell_sudo
+function sudo() {
+    if ($args.Length -eq 1) {
+        start-process $args[0] -verb "runAs"
+    }
+    if ($args.Length -gt 1) {
+        start-process $args[0] -ArgumentList $args[1..$args.Length] -verb "runAs"
+    }
+}
+
 Remove-Item alias:\where -Force
 function where { param($command) (Get-Command $command).Path; }
 
