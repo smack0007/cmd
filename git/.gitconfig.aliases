@@ -6,6 +6,7 @@ br = branch
 branches = branch -a
 brrm = branch -d
 cm = commit -m
+cmhash = rev-parse HEAD --short
 co = checkout
 cob = checkout -b
 # Show list of files in a conflict state.
