@@ -12,7 +12,7 @@ __PROMPT_COLOR=""
 
 __prompt_color() {    
     if [[ $2 ]]; then
-         __PROMPT_COLOR="\e[38;5;${1}m\e[48;5;${2}m";
+        __PROMPT_COLOR="\e[38;5;${1}m\e[48;5;${2}m";
     else
         __PROMPT_COLOR="\e[0m\e[38;5;${1}m"
     fi

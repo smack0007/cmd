@@ -98,7 +98,11 @@ Set-Alias -Name set-env -Value env-set;
 Remove-Alias -Name cd;
 function cd { param($dir) Set-Location $dir; __updateWindowTitle }
 
-function fork { wt -w 0 -d "$(Get-Location)" }
+function fork {
+    & wt -w 0 -d "$(Get-Location)" "${env:PROGRAMFILES}\PowerShell\7\pwsh.exe" -noe -nop -nol -f "C:\cmd\pwsh\init.ps1" @args
+}
+
+function git-bash { & "${env:PROGRAMFILES}\Git\usr\bin\bash.exe" --login -i -l }
 
 Set-Alias -Name e -Value explorer;
 Set-Alias -Name grep -Value Select-String;
@@ -161,4 +165,9 @@ function Git-Template
     git clone https://github.com/$src $dest --depth 1;
     cd $dest;
     rm -r -Force .git
+}
+
+# If any arguments are passed to the script
+if ($args.Length -gt 0) {
+    & @args
 }
