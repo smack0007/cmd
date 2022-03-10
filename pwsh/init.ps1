@@ -123,7 +123,10 @@ function sudo() {
     }
 }
 
-function time { $Command = "$args"; (Measure-Command { Invoke-Expression $Command 2>&1 | Out-Default }).ToString() }
+function time {
+    $Command = "$args";
+    (Measure-Command { Invoke-Expression $Command 2>&1 | Out-Default }).ToString();
+}
 
 Remove-Item alias:\where -Force
 function where { param($command) (Get-Command $command).Path; }
