@@ -1,0 +1,41 @@
+{
+  "angular.experimental-ivy": true,
+
+  "editor.fontFamily": "Hack",
+  "editor.fontSize": 18,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.automationProfile.windows": {
+    "path": "cmd.exe"
+  },
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+      "args": ["-noe", "-nop", "-nol", "-f", "C:\\cmd\\pwsh\\init.ps1"]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+
+  "workbench.iconTheme": "vscode-icons",
+  "docker.showStartPage": false,
+  "redhat.telemetry.enabled": false,
+  "settingsSync.ignoredExtensions": ["jebbs.plantuml"],
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "workbench.startupEditor": "none",
+  "go.toolsManagement.autoUpdate": true,
+  "files.associations": {
+    "*.cc": "cpp"
+  }
+}
