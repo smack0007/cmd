@@ -5,6 +5,9 @@ $CmdRoot = (Get-Item $ProfileRoot).Parent.FullName;
 # Set the HOME environment variable for git
 $env:HOME = $env:USERPROFILE;
 
+# Add current directory to path
+$env:PATH = $ProfileRoot + ";" + $env:PATH;
+
 $colors = @{
     "hostBackground" = $Host.UI.RawUI.BackgroundColor;
     "pathBackground" = [ConsoleColor]::Blue;
@@ -163,14 +166,6 @@ function Test-Administrator
 }
 
 __updateWindowTitle
-
-function Git-Template
-{
-    param($src, $dest)
-    git clone https://github.com/$src $dest --depth 1;
-    cd $dest;
-    rm -r -Force .git
-}
 
 # If any arguments are passed to the script
 if ($args.Length -gt 0) {
