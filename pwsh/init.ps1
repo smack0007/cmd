@@ -78,7 +78,7 @@ function global:prompt
 }
 
 #
-# Aliases
+# Commands
 #
 
 function cmd-cd { Set-Location $CmdRoot; }
@@ -88,6 +88,16 @@ function cmd-gitex { pushd $CmdRoot; gitex; popd; }
 function cmd-pull { pushd $CmdRoot; git pull; popd; }
 function cmd-push { param($message) pushd $CmdRoot; git add -A && git commit -m "$message" && git push origin master; popd; }
 function cmd-status { pushd $CmdRoot; git status -s; popd; }
+
+function code-load-settings { 
+    cp $CmdRoot\Code\keybindings.json ${env:APPDATA}\Code\User\keybindings.json
+    cp $CmdRoot\Code\settings.json ${env:APPDATA}\Code\User\settings.json
+}
+
+function code-save-settings { 
+    cp ${env:APPDATA}\Code\User\keybindings.json $CmdRoot\Code\keybindings.json
+    cp ${env:APPDATA}\Code\User\settings.json $CmdRoot\Code\settings.json
+}
 
 function env-get { param($key) $value = [System.Environment]::GetEnvironmentVariable($key); Write-Host $value; }
 Set-Alias -Name get-env -Value env-get;
