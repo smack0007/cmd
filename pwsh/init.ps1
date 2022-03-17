@@ -99,6 +99,16 @@ function code-save-settings {
     cp ${env:APPDATA}\Code\User\settings.json $CmdRoot\Code\settings.json
 }
 
+function docker-dev {
+    docker run --rm -it -v "$(pwd):/app" -w /app localhost/dev
+}
+
+function docker-dev-rebuild {
+    pushd "$CmdRoot\docker";
+    docker build -f dev.Dockerfile . -t localhost/dev;
+    popd
+}
+
 function env-get { param($key) $value = [System.Environment]::GetEnvironmentVariable($key); Write-Host $value; }
 Set-Alias -Name get-env -Value env-get;
 
