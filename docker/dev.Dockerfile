@@ -10,6 +10,8 @@ RUN set -eux; \
         gcc \
         mingw64-gcc \
         nano \
+        python \
+        snapd \
         tar \
     ; \
     dnf clean all; \
