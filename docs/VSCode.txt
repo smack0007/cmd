@@ -1,3 +1,6 @@
+"terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+"terminal.integrated.fontSize": 18,
+
 CMD:
 "terminal.integrated.automationShell.windows": "cmd.exe",
 "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
@@ -18,5 +21,18 @@ PWSH:
     }
 },
 "terminal.integrated.defaultProfile.windows": "PowerShell",
-"terminal.integrated.fontFamily": "Hack Nerd Font Mono",
-"terminal.integrated.fontSize": 18,
+
+DOCKER:
+ "DockerDev": {
+      "path": "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe",
+      "args": [
+        "run",
+        "--rm",
+        "-it",
+        "-v",
+        "${workspaceFolder}:/data",
+        "-w",
+        "/data",
+        "localhost/dev"
+      ]
+    }
