@@ -1,8 +1,8 @@
 FROM fedora:35
 
-COPY docker.bashrc /root/docker.bashrc
-
 RUN set -eux; \
+    useradd -rm -d /home/default -s /bin/bash -g root -G wheel -u 1001 default; \
+    echo '. /home/default/cmd/docker/docker.bashrc' >> /home/default/.bashrc; \
     dnf update -y; \
     dnf install -y \
         curl \
@@ -12,7 +12,10 @@ RUN set -eux; \
         nano \
         python \
         snapd \
+        sudo \
         tar \
     ; \
-    dnf clean all; \
-    echo '. /root/docker.bashrc' >> ~/.bashrc;
+    dnf clean all;
+
+USER default
+WORKDIR /home/default

@@ -100,11 +100,11 @@ function code-save-settings {
 }
 
 function docker-dev {
-    docker run --rm -it -v "$(pwd):/data" -w /data localhost/dev
+    docker run --rm -it -v "${CmdRoot}:/home/default/cmd" -v "$(pwd):/data" -w /data localhost/dev
 }
 
 function docker-dev-rebuild {
-    pushd "$CmdRoot\docker";
+    pushd "${CmdRoot}\docker";
     docker build -f dev.Dockerfile . -t localhost/dev;
     popd
 }
