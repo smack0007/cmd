@@ -100,7 +100,7 @@ function code-save-settings {
 }
 
 function docker-dev {
-    docker run --rm -it -v "$(pwd):/app" -w /app localhost/dev
+    docker run --rm -it -v "$(pwd):/data" -w /data localhost/dev
 }
 
 function docker-dev-rebuild {
