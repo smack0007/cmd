@@ -1,0 +1,1 @@
+echo '. /mnt/c/cmd/wsl/fedora/.bashrc' >> ~/.bashrc;
