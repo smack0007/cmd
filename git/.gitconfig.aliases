@@ -22,4 +22,5 @@ make-personal = !git config user.name smack0007 && git config user.email zachary
 push-upstream = push --set-upstream
 remotes = remote -v
 st = status -s
+sw = switch
 tmpl = "!f(){ git clone https://github.com/$1 $2 --depth 1 && cd $2 && rm -rf .git; };f"
