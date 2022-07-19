@@ -14,10 +14,6 @@ alias cmd-status="pushd $CMDROOT > /dev/null && git status -s && popd > /dev/nul
 
 alias e="explorer.exe"
 
-alias fork="wt.exe -w 0 -d '$(pwd)'"
-
-alias gitex="cmd.exe /c '\"C:\Program Files (x86)\GitExtensions\gitex.cmd\"'"
-
 alias ll="ls -lA --color=auto"
 
 function mcd() {
