@@ -9,7 +9,7 @@ __ps1_git_branch() {
         local git_status=$(git status -s)
         
         if [[ $git_status ]]; then
-            printf "\e[97;103m ${git_branch} "
+            printf "\e[97;43m ${git_branch} "
         else
             printf "\e[97;42m ${git_branch} "
         fi
