@@ -9,7 +9,7 @@
 
 PROMPT_CHAR=${POWERLINE_PROMPT_CHAR:=""}
 POWERLINE_LEFT_SEPARATOR=" "
-POWERLINE_PROMPT="cwd scm"
+POWERLINE_PROMPT="last_status cwd scm"
 
 USER_INFO_SSH_CHAR=" "
 USER_INFO_PROMPT_COLOR="C B"
@@ -88,7 +88,7 @@ function __powerline_user_info_prompt {
 }
 
 function __powerline_cwd_prompt {
-  echo " ${CWD_CHAR}\w |${CWD_PROMPT_COLOR}"
+  echo " \w |${CWD_PROMPT_COLOR}"
 }
 
 function __powerline_scm_prompt {
