@@ -2,6 +2,7 @@
 # Phil Haack @haacked https://github.com/haacked/dotfiles/blob/main/git/gitconfig.aliases.symlink
 
 [alias]
+ac = commit -am
 br = branch
 branches = branch -a
 brrm = branch -d
