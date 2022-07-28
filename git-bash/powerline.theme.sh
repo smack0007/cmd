@@ -1,3 +1,6 @@
+# This is a custom version of "Git bash for windows powerline theme" modified
+# by me.
+
 # Git bash for windows powerline theme
 #
 # Licensed under MIT
@@ -7,19 +10,19 @@
 # More info about color codes in https://en.wikipedia.org/wiki/ANSI_escape_code
 
 
-PROMPT_CHAR=${POWERLINE_PROMPT_CHAR:=""}
-POWERLINE_LEFT_SEPARATOR=" "
+PROMPT_CHAR=${POWERLINE_PROMPT_CHAR:=""}
+POWERLINE_LEFT_SEPARATOR=""
 POWERLINE_PROMPT="last_status cwd scm"
 
 USER_INFO_SSH_CHAR=" "
 USER_INFO_PROMPT_COLOR="C B"
 
-SCM_GIT_CHAR=" "
+SCM_GIT_CHAR=" "
 SCM_PROMPT_CLEAN=""
 SCM_PROMPT_DIRTY="*"
 SCM_PROMPT_AHEAD="↑"
 SCM_PROMPT_BEHIND="↓"
-SCM_PROMPT_CLEAN_COLOR="G Bl"
+SCM_PROMPT_CLEAN_COLOR="G W"
 SCM_PROMPT_DIRTY_COLOR="Y Bl"
 SCM_PROMPT_AHEAD_COLOR=""
 SCM_PROMPT_BEHIND_COLOR=""
@@ -27,7 +30,7 @@ SCM_PROMPT_STAGED_COLOR="Y Bl"
 SCM_PROMPT_UNSTAGED_COLOR="R Bl"
 SCM_PROMPT_COLOR=${SCM_PROMPT_CLEAN_COLOR}
 
-CWD_CHAR=""
+CWD_CHAR=" "
 CWD_PROMPT_COLOR="B W"
 
 STATUS_PROMPT_COLOR="Bl R B"
@@ -88,7 +91,7 @@ function __powerline_user_info_prompt {
 }
 
 function __powerline_cwd_prompt {
-  echo " \w |${CWD_PROMPT_COLOR}"
+  echo " ${CWD_CHAR}\w |${CWD_PROMPT_COLOR}"
 }
 
 function __powerline_scm_prompt {
@@ -169,7 +172,7 @@ function __powerline_scm_prompt {
   [[ -n "$git_behind" ]] && scm_info+="${SCM_PROMPT_BEHIND}${git_behind_count}"
   [[ -n "$git_ahead" ]] && scm_info+="${SCM_PROMPT_AHEAD}${git_ahead_count}"
 
-  [[ -n "${scm_info}" ]] && echo "${scm_info} |${color}"
+  [[ -n "${scm_info}" ]] && echo " ${scm_info} |${color}"
 }
 
 function __powerline_left_segment {
@@ -200,7 +203,7 @@ function __powerline_last_status_prompt {
   [[ $UID -eq 0 ]] && symbols+="$(__color ${STATUS_PROMPT_ROOT_COLOR})${STATUS_PROMPT_ROOT}"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="$(__color ${STATUS_PROMPT_JOBS_COLOR})${STATUS_PROMPT_JOBS}"
 
-  [[ -n "$symbols" ]] && echo "$symbols|${STATUS_PROMPT_COLOR}"
+  [[ -n "$symbols" ]] && echo "$symbols |${STATUS_PROMPT_COLOR}"
 }
 
 function __powerline_prompt_command {
