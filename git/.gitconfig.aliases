@@ -22,6 +22,7 @@ ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decor
 make-personal = !git config user.name smack0007 && git config user.email zachary.snow@gmail.com
 push-upstream = push --set-upstream
 remotes = remote -v
+spull = !git stash && git pull && git stash pop
 st = status -s
 sw = switch
 tmpl = "!f(){ git clone https://github.com/$1 $2 --depth 1 && cd $2 && rm -rf .git; };f"
