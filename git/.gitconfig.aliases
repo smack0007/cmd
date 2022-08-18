@@ -3,8 +3,8 @@
 
 [alias]
 ac = commit -am
-br = branch
-branches = branch -a
+br = branch -a
+brls = branch -a --list
 brrm = branch -d
 cm = commit -m
 cmhash = rev-parse HEAD --short
