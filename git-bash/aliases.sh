@@ -24,3 +24,7 @@ function mcd() {
     mkdir -p $1
     cd $1
 }
+
+function title() {
+    echo -ne "\e]0;$1\a"
+}
