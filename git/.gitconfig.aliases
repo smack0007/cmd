@@ -3,6 +3,7 @@
 
 [alias]
 ac = commit -am
+alias = !git config --list | grep ^alias\\. | cut -c 7-
 br = branch -a
 brls = branch -a --list
 brrm = branch -d
