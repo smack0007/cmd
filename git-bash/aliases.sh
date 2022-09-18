@@ -25,6 +25,8 @@ function mcd() {
     cd $1
 }
 
+alias sudo="gsudo"
+
 function title() {
     echo -ne "\e]0;$1\a"
 }
