@@ -1,6 +1,12 @@
 # Thanks to:
 # Phil Haack @haacked https://github.com/haacked/dotfiles/blob/main/git/gitconfig.aliases.symlink
 
+[core]
+editor = "code --wait"
+
+[init]
+defaultBranch = "main"
+
 [alias]
 ac = commit -am
 alias = !git config --list | grep ^alias\\. | cut -c 7-
