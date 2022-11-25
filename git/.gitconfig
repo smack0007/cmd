@@ -33,4 +33,5 @@ remotes = remote -v
 spull = !git stash && git pull && git stash pop
 st = status -s
 sw = switch
+tag-version = "!f(){ git tag -a v$1 -m 'v$1' && git push origin v$1; };f"
 tmpl = "!f(){ git clone https://github.com/$1 $2 --depth 1 && cd $2 && rm -rf .git; };f"
