@@ -10,6 +10,10 @@ function cmd-push() {
 
 alias cmd-status="pushd $CMDROOT > /dev/null && git status -s && popd > /dev/null"
 
+function e() {
+    xdg-open $1 2>/dev/null
+}
+
 alias ll="ls -lA --color=auto"
 
 function mcd() {
